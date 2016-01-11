@@ -7,8 +7,10 @@
 *.la
 *.lai
 *.so
-*.dll
 *.dylib
+*.exp
+*.ilk
+*.pdb
 
 # Qt-es
 

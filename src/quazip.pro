@@ -11,7 +11,7 @@ DEFINES += "WINVER=0x0501"
 DEFINES += "_WIN32_WINNT=0x0501"
 
 win32 {
-    ZLIBDIR = F:\Qt\5.5\Src\qtbase\src\3rdparty\zlib
+    ZLIBDIR = $$[QT_INSTALL_PREFIX]/../Src/qtbase/src/3rdparty/zlib
 }
 INCLUDEPATH += $${ZLIBDIR}
 
@@ -50,4 +50,20 @@ win32 {
     target.path=$$PREFIX/lib
     INSTALLS += headers target
 
+}
+
+!contains(QMAKE_TARGET.arch, x86_64) {
+    CONFIG(release, debug|release) {
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/release/win32
+    }
+    else:CONFIG(debug, debug|release){
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/debug/win32
+    }
+} else {
+    CONFIG(release, debug|release) {
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/release/win64
+    }
+    else:CONFIG(debug, debug|release){
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/debug/win64
+    }
 }
