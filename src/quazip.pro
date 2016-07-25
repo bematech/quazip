@@ -6,9 +6,6 @@ INCLUDEPATH += .
 
 DEFINES += QUAZIP_BUILD
 CONFIG(staticlib): DEFINES += QUAZIP_STATIC
-#Windows XP compatability
-DEFINES += "WINVER=0x0501"
-DEFINES += "_WIN32_WINNT=0x0501"
 
 win32 {
     ZLIBDIR = $$[QT_INSTALL_PREFIX]/../Src/qtbase/src/3rdparty/zlib
