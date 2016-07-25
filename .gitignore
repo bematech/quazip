@@ -11,6 +11,7 @@
 *.exp
 *.ilk
 *.pdb
+*.dll
 
 # Qt-es
 
