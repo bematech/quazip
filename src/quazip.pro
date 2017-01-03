@@ -49,18 +49,28 @@ win32 {
 
 }
 
-!contains(QMAKE_TARGET.arch, x86_64) {
-    CONFIG(release, debug|release) {
-        DESTDIR = $${_PRO_FILE_PWD_}/../build/win32
-    }
-    else:CONFIG(debug, debug|release){
-        DESTDIR = $${_PRO_FILE_PWD_}/../build/win32d
+win32 {
+    !contains(QMAKE_TARGET.arch, x86_64) {
+        CONFIG(release, debug|release) {
+            DESTDIR = $${_PRO_FILE_PWD_}/../build/win32
+        }
+        else:CONFIG(debug, debug|release){
+            DESTDIR = $${_PRO_FILE_PWD_}/../build/win32d
+        }
+    } else {
+        CONFIG(release, debug|release) {
+            DESTDIR = $${_PRO_FILE_PWD_}/../build/win64
+        }
+        else:CONFIG(debug, debug|release){
+            DESTDIR = $${_PRO_FILE_PWD_}/../build/win64d
+        }
     }
 } else {
+    CONFIG += unversioned_libname
     CONFIG(release, debug|release) {
-        DESTDIR = $${_PRO_FILE_PWD_}/../build/win64
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/unix
     }
     else:CONFIG(debug, debug|release){
-        DESTDIR = $${_PRO_FILE_PWD_}/../build/win64d
+        DESTDIR = $${_PRO_FILE_PWD_}/../build/unixd
     }
 }
